@@ -4,3 +4,172 @@
 *:after {
   box-sizing: border-box;
 }
+
+/* --- Global & Shell --- */
+* { box-sizing: border-box; }
+
+/* --- Header Layout --- */
+#top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+}
+
+.siteName a {
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+}
+
+#tools a {
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+/* --- Navigation Bar --- */
+nav {
+    background-color: #333; /* Dark Charcoal bar */
+    margin-bottom: 20px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+nav ul li {
+    padding: 12px 0;
+    color: #fff;
+    cursor: pointer;
+    font-weight: 400;
+}
+
+/* --- Footer --- */
+footer {
+    border-top: 1px solid #ddd;
+    margin-top: 40px;
+    padding-top: 10px;
+}
+
+.copyright {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-image: url('/images/site/checkerboard.jpg'); /* Match image_1b7306.jpg */
+    margin: 0;
+    padding: 10px;
+}
+
+#wrapper {
+    background: #fff;
+    max-width: 1000px;
+    margin: 0 auto;
+    border: 4px solid #4eb7d9;
+    border-radius: 8px;
+    padding: 0 20px 20px 20px;
+}
+
+/* --- Hero Section: Floating Text --- */
+.hero-section {
+    position: relative; 
+    display: flex;
+    flex-direction: column;
+}
+
+.hero-details {
+    position: absolute; 
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+    background-color: rgba(255, 255, 255, 0.7); /* Glassmorphism/Transparent look */
+    padding: 10px;
+    color: #00AEEF;
+}
+
+.hero-details h2 { margin: 0; font-size: 1.5rem; }
+.hero-details p { margin: 2px 0; font-weight: bold; }
+
+.own-today-btn {
+    background-color: #00AEEF;
+    border: none;
+    padding: 10px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.hero-image {
+    width: 100%;
+    height: auto;
+    align-self: flex-end; 
+}
+
+/* --- Info Grid: Mobile Order --- */
+.info-grid {
+    display: flex;
+    flex-direction: column; 
+}
+
+.reviews-container {
+    order: 1; 
+    margin-bottom: 20px;
+}
+
+.upgrades-container {
+    order: 2; 
+}
+
+/* --- Upgrade Cards --- */
+.upgrades-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.upgrade-card {
+    text-align: center;
+    border: 1px solid #ccc;
+    background: #fff;
+    padding: 10px;
+}
+
+.img-box {
+    background-color: #00AEEF; /* The signature blue box from your screenshot */
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.img-box img { max-height: 90%; }
+
+/* --- Desktop Layout: Side-by-Side --- */
+@media (min-width: 768px) {
+    .info-grid {
+        flex-direction: row; /* Horizontal side-by-side */
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    .upgrades-container {
+        width: 48%;
+        order: 1; /* Upgrades on the left on desktop */
+    }
+
+    .reviews-container {
+        width: 48%;
+        order: 2; /* Reviews on the right on desktop */
+    }
+}
