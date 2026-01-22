@@ -198,15 +198,15 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 2rem;
     padding: 2rem;
-    list-style-type: none; /* Removes the bullet points */
+    list-style-type: none; /
 }
 
 /* Individual Card Styling */
 #inv-display li {
     background: #ffffff;
-    border-radius: 12px; /* Apple-style rounded corners */
+    border-radius: 12px;
     padding: 1.5rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Soft, expensive-looking shadow */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); 
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     text-align: center;
 }
@@ -228,7 +228,7 @@ body {
 /* Typography refinement */
 .namePrice h2 a {
     text-decoration: none;
-    color: #1d1d1f; /* Apple's signature near-black */
+    color: #1d1d1f; 
     font-weight: 600;
     font-size: 1.1rem;
 }
@@ -236,7 +236,7 @@ body {
 .namePrice span {
     display: block;
     margin-top: 0.5rem;
-    color: #86868b; /* Subtle grey for the price */
+    color: #86868b; 
     font-size: 1rem;
 }
 
