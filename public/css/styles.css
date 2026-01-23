@@ -246,3 +246,46 @@ hr {
     background: #e5e5e7;
     margin: 1rem 0;
 }
+
+/* Mobile First - Stacked */
+#detail-display {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 10px;
+}
+
+#detail-display img {
+  width: 100%;
+  max-width: 600px;
+  border-radius: 8px;
+  align-self: center;
+}
+
+#detail-info {
+  line-height: 1.6;
+}
+
+#detail-info h2 {
+  margin-top: 0;
+  font-size: 1.8rem;
+}
+
+/* Desktop - Side by Side  */
+@media screen and (min-width: 768px) {
+  #detail-display {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-around;
+    padding: 40px;
+  }
+
+  #detail-display img {
+    width: 50%; /* Image takes half the screen */
+  }
+
+  #detail-info {
+    width: 40%; /* Info takes the other half */
+    padding-left: 20px;
+  }
+}

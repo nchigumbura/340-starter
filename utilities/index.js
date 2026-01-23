@@ -24,8 +24,6 @@ Util.getNav = async function (req, res, next) {
   return list
 }
 
-module.exports = Util
-
 /* **************************************
 * Build the classification view HTML
 * ************************************ */
@@ -65,3 +63,21 @@ Util.buildClassificationGrid = async function(data){
  * General Error Handling
  **************************************** */
 Util.handleErrors = fn => (req, res, next) => Promise.resolve(fn(req, res, next)).catch(next)
+
+/* **************************************
+* Build the vehicle detail HTML
+* ************************************ */
+Util.buildItemDetailGrid = async function(data) {
+  let display = '<div id="detail-display">'
+  display += `<img src="${data.inv_image}" alt="Image of ${data.inv_make} ${data.inv_model}">`
+  display += '<div id="detail-info">'
+  display += `<h2>${data.inv_make} ${data.inv_model} Details</h2>`
+  display += `<p><strong>Price:</strong> $${new Intl.NumberFormat('en-US').format(data.inv_price)}</p>`
+  display += `<p><strong>Description:</strong> ${data.inv_description}</p>`
+  display += `<p><strong>Color:</strong> ${data.inv_color}</p>`
+  display += `<p><strong>Miles:</strong> ${data.inv_miles.toLocaleString()}</p>`
+  display += '</div></div>'
+  return display
+}
+
+module.exports = Util
