@@ -20,11 +20,11 @@
     font-size: 1.8rem;
     font-weight: bold;
     text-decoration: none;
-    color: #333;
+    color: #1d1d1f;
 }
 
 #tools a {
-    color: #333;
+    color: #1d1d1f;
     text-decoration: none;
     font-weight: 500;
     text-transform: uppercase;
@@ -51,7 +51,7 @@ nav ul {
 
 nav ul li a {
     text-decoration: none;
-    color: #f5f5f7;
+    color: #ffffff;
     font-size: 0.85rem;
     font-weight: 400;
     letter-spacing: 0.02em;
@@ -75,7 +75,7 @@ footer {
 
 .copyright {
     font-size: 0.9rem;
-    color: #666;
+    color: #444;
 }
 
 body {
@@ -236,7 +236,7 @@ body {
 .namePrice span {
     display: block;
     margin-top: 0.5rem;
-    color: #86868b; 
+    color: #515154; 
     font-size: 1rem;
 }
 
@@ -249,6 +249,7 @@ hr {
 
 /* Mobile First - Stacked */
 #detail-display {
+  max-width: 1200px;
   display: flex;
   flex-direction: column;
   gap: 20px;
