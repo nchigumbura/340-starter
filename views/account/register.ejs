@@ -17,8 +17,24 @@
 
     <label for="account_password">Password:</label>
     <input type="password" name="account_password" id="account_password" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,}$">
+    <button type="button" id="psswdBtn" class="toggle-password">Show Password</button>
     <span class="password-hint">Passwords must be at least 12 characters and contain at least 1 number, 1 capital letter and 1 special character.</span>
 
     <button type="submit">Register</button>
   </form>
 </div>
+
+<script>
+  const psswdBtn = document.querySelector("#psswdBtn");
+  psswdBtn.addEventListener("click", function() {
+    const psswdInput = document.getElementById("account_password");
+    const type = psswdInput.getAttribute("type");
+    if (type === "password") {
+      psswdInput.setAttribute("type", "text");
+      psswdBtn.textContent = "Hide Password";
+    } else {
+      psswdInput.setAttribute("type", "password");
+      psswdBtn.textContent = "Show Password";
+    }
+  });
+</script>
