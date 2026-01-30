@@ -19,8 +19,6 @@ invCont.buildByClassificationId = async function (req, res, next) {
   })
 }
 
-module.exports = invCont
-
 /* ***************************
  * Build item detail view
  * ************************** */
@@ -47,3 +45,28 @@ invCont.buildManagement = async function (req, res, next) {
     errors: null,
   })
 }
+
+/* ****************************************
+* Process Add Classification
+* *************************************** */
+invCont.addClassification = async function (req, res) {
+  const { classification_name } = req.body
+  const result = await invModel.addClassification(classification_name)
+
+  if (result) {
+    let nav = await utilities.getNav() // nav with the new item
+    req.flash("notice", `Classification ${classification_name} was successfully added.`)
+    res.status(201).render("inventory/management", {
+      title: "Vehicle Management",
+      nav,
+    })
+  } else {
+    req.flash("notice", "Sorry, adding the classification failed.")
+    res.status(501).render("inventory/add-classification", {
+      title: "Add Classification",
+      nav: await utilities.getNav(),
+    })
+  }
+}
+
+module.exports = invCont
