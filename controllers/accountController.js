@@ -9,8 +9,17 @@ async function buildLogin(req, res, next) {
   res.render("account/login", {
     title: "Login",
     nav,
+    errors: null, // Fixed: Added this to prevent EJS errors
   })
 }
+
+/* ****************************************
+* Process Login
+* *************************************** */
+async function loginAccount(req, res) {
+  res.send("Login process initiated. We will build the security handshake soon, love.")
+}
+
 
 /* ****************************************
 * Deliver registration view
@@ -57,4 +66,4 @@ async function registerAccount(req, res) {
 }
 
 
-module.exports = { buildLogin, buildRegister, registerAccount }
+module.exports = { buildLogin, buildRegister, registerAccount, loginAccount }

@@ -363,3 +363,15 @@ input:required:invalid {
 input:required:valid {
   border-left: 5px solid green;
 }
+
+/* --- Notice Styles --- */
+.notice {
+    list-style-type: none;
+    background-color: #fff0f0; 
+    color: #d93025;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid #d93025;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
