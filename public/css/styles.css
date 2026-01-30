@@ -353,3 +353,13 @@ p {
     width: fit-content;
     cursor: pointer;
 }
+
+/* invalid inputs */
+input:required:invalid {
+  border-left: 5px solid red;
+}
+
+/* valid inputs */
+input:required:valid {
+  border-left: 5px solid green;
+}

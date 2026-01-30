@@ -16,7 +16,8 @@
     <input type="email" name="account_email" id="account_email" required placeholder="Enter a valid email address">
 
     <label for="account_password">Password:</label>
-    <input type="password" name="account_password" id="account_password" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,}$">
+    <input type="password" name="account_password" id="account_password" required 
+           pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$">
     <button type="button" id="psswdBtn" class="toggle-password">Show Password</button>
     <span class="password-hint">Passwords must be at least 12 characters and contain at least 1 number, 1 capital letter and 1 special character.</span>
 

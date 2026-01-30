@@ -6,11 +6,12 @@
 
 <div class="login-container">
   <form action="/account/login" method="post">
-    <label for="account_email">Email:</label>
+    <label for="account_email">Email Address:</label>
     <input type="email" name="account_email" id="account_email" required>
 
     <label for="account_password">Password:</label>
-    <input type="password" name="account_password" id="account_password" required>
+    <input type="password" name="account_password" id="account_password" required 
+         pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$">
     <button type="button" id="psswdBtn" class="toggle-password">Show Password</button>
 
     <button type="submit">Login</button>
