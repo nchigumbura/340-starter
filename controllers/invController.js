@@ -35,3 +35,15 @@ invCont.buildItemDetail = async function (req, res, next) {
     grid,
   })
 }
+
+/* ****************************************
+ * Deliver management view
+ * *************************************** */
+invCont.buildManagement = async function (req, res, next) {
+  let nav = await utilities.getNav()
+  res.render("inventory/management", {
+    title: "Vehicle Management",
+    nav,
+    errors: null,
+  })
+}
