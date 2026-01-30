@@ -33,4 +33,38 @@ validate.checkClassificationData = async (req, res, next) => {
   next()
 }
 
+/// /* **********************************
+//  * Inventory Validation Rules
+//  * ********************************* */
+
+validate.inventoryRules = () => {
+  return [
+    body("inv_make").trim().escape().notEmpty().withMessage("Please provide a make."),
+    body("inv_model").trim().escape().notEmpty().withMessage("Please provide a model."),
+    body("inv_year").trim().isNumeric().isLength({ min: 4, max: 4 }).withMessage("Please provide a 4-digit year."),
+    body("inv_price").trim().isNumeric().withMessage("Please provide a valid price."),
+    body("inv_miles").trim().isNumeric().withMessage("Please provide valid mileage."),
+    body("inv_color").trim().escape().notEmpty().withMessage("Please provide a color."),
+    body("classification_id").notEmpty().withMessage("Please select a classification."),
+  ]
+}
+
+validate.checkInventoryData = async (req, res, next) => {
+  let errors = validationResult(req)
+  if (!errors.isEmpty()) {
+    let nav = await utilities.getNav()
+    // Re-build the select list and make it sticky
+    let classificationSelect = await utilities.buildClassificationList(req.body.classification_id)
+    res.render("inventory/add-inventory", {
+      errors,
+      title: "Add Vehicle",
+      nav,
+      classificationSelect,
+      ...req.body // spread operator to get req.body values
+    })
+    return
+  }
+  next()
+}
+
 module.exports = validate
