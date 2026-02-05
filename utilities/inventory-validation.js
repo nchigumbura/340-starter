@@ -41,9 +41,10 @@ validate.inventoryRules = () => {
   return [
     body("inv_make").trim().escape().notEmpty().withMessage("Please provide a make."),
     body("inv_model").trim().escape().notEmpty().withMessage("Please provide a model."),
-    body("inv_year").trim().isNumeric().isLength({ min: 4, max: 4 }).withMessage("Please provide a 4-digit year."),
-    body("inv_price").trim().isNumeric().withMessage("Please provide a valid price."),
-    body("inv_miles").trim().isNumeric().withMessage("Please provide valid mileage."),
+    // Add .notEmpty() before the other checks
+    body("inv_year").trim().notEmpty().isNumeric().isLength({ min: 4, max: 4 }).withMessage("Please provide a 4-digit year."),
+    body("inv_price").trim().notEmpty().isNumeric().withMessage("Please provide a valid price."),
+    body("inv_miles").trim().notEmpty().isNumeric().withMessage("Please provide valid mileage."),
     body("inv_color").trim().escape().notEmpty().withMessage("Please provide a color."),
     body("classification_id").notEmpty().withMessage("Please select a classification."),
   ]
@@ -60,7 +61,29 @@ validate.checkInventoryData = async (req, res, next) => {
       title: "Add Vehicle",
       nav,
       classificationSelect,
-      ...req.body // spread operator to get req.body values
+      ...req.body // spread operator
+    })
+    return
+  }
+  next()
+}
+
+/* ******************************
+ * Check update data and return errors to edit view
+ * ***************************** */
+validate.checkUpdateData = async (req, res, next) => {
+  const { inv_id, inv_make, inv_model, inv_year, inv_description, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color, classification_id } = req.body
+  let errors = validationResult(req)
+  if (!errors.isEmpty()) {
+    let nav = await utilities.getNav()
+    const classificationSelect = await utilities.buildClassificationList(classification_id)
+    const itemName = `${inv_make} ${inv_model}`
+    res.render("inventory/edit-inventory", {
+      title: "Edit " + itemName,
+      nav,
+      classificationSelect,
+      errors,
+      inv_id, inv_make, inv_model, inv_year, inv_description, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color, classification_id
     })
     return
   }
