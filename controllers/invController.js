@@ -4,18 +4,6 @@ const utilities = require("../utilities/")
 const invCont = {}
 
 /* ***************************
- * Deliver Management View
- * ************************** */
-invCont.buildManagement = async function (req, res, next) {
-  let nav = await utilities.getNav()
-  res.render("inventory/management", {
-    title: "Vehicle Management",
-    nav,
-    errors: null,
-  })
-}
-
-/* ***************************
  * Deliver Add Classification View
  * ************************** */
 invCont.buildAddClassification = async function (req, res, next) {
@@ -116,6 +104,33 @@ invCont.buildItemDetail = async function (req, res, next) {
     nav,
     grid,
   })
+}
+
+// Deliver Inventory Management View
+invCont.buildManagement = async function (req, res, next) {
+  let nav = await utilities.getNav()
+  // Add this line to create the classification select list
+  const classificationSelect = await utilities.buildClassificationList()
+  
+  res.render("./inventory/management", {
+    title: "Vehicle Management",
+    nav,
+    classificationSelect, // Pass the list to the view
+    errors: null,
+  })
+}
+
+/* ***************************
+ * Return Inventory by Classification As JSON
+ * ************************** */
+invCont.getInventoryJSON = async (req, res, next) => {
+  const classification_id = parseInt(req.params.classification_id)
+  const invData = await invModel.getInventoryByClassificationId(classification_id)
+  if (invData[0].inv_id) {
+    return res.json(invData)
+  } else {
+    next(new Error("No data returned"))
+  }
 }
 
 module.exports = invCont
