@@ -17,7 +17,9 @@ router.post("/register", regValidate.registationRules(), regValidate.checkRegDat
 router.post("/login", regValidate.loginRules(), regValidate.checkLoginData, utilities.handleErrors(accountController.accountLogin))
 
 // Default route for account management
-router.get("/", utilities.handleErrors(accountController.buildManagement))
+router.get("/", utilities.checkLogin, utilities.handleErrors(accountController.buildManagement))
 
+// Route to log out
+router.get("/logout", utilities.handleErrors(accountController.accountLogout))
 
 module.exports = router
