@@ -14,6 +14,10 @@ router.get("/register", utilities.handleErrors(accountController.buildRegister))
 router.post("/register", regValidate.registationRules(), regValidate.checkRegData, utilities.handleErrors(accountController.registerAccount))
 
 // Process the login attempt
-router.post("/login", regValidate.loginRules(), regValidate.checkLoginData, utilities.handleErrors(accountController.loginAccount))
+router.post("/login", regValidate.loginRules(), regValidate.checkLoginData, utilities.handleErrors(accountController.accountLogin))
+
+// Default route for account management
+router.get("/", utilities.handleErrors(accountController.buildManagement))
+
 
 module.exports = router

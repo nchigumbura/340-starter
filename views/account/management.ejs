@@ -1,0 +1,14 @@
+<% if (title) { %>
+  <h1><%= title %></h1>
+<% } else { res.redirect('/') } %>
+
+<%- messages() %>
+
+<div class="account-management">
+  <p>You are logged in.</p>
+  
+  <% if (locals.accountData && locals.accountData.account_type === 'Admin') { %>
+    <h3>Inventory Management</h3>
+    <p><a href="/inv/">Manage Inventory</a></p>
+  <% } %>
+</div>
